@@ -1,0 +1,22 @@
+{
+  "name": "@szydlovski/median-cut",
+  "version": "0.2.0",
+  "description": "an implementation of the median cut quantization algorithm",
+  "main": "build/median-cut.js",
+  "scripts": {
+    "build": "tsc"
+  },
+  "keywords": [
+    "median-cut",
+    "quantization"
+  ],
+  "author": {
+    "name": "Kamil Szydlowski",
+    "email": "kamil.szydlovski@gmail.com",
+    "url": "http://szydlovski.com"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^4.3.5"
+  }
+}
