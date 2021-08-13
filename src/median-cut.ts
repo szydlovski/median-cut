@@ -1,4 +1,12 @@
-export function medianCut<T extends number[]>(data: T[], count = 16) {
+type DataCluster<DataType> = {
+	mean: DataType;
+	points: DataType[];
+};
+
+export function medianCut<T extends number[]>(
+	data: T[],
+	count = 16
+): DataCluster<T>[] {
 	let clusters = [data];
 	while (clusters.length < count) {
 		clusters = clusters.flatMap((cluster) => {
@@ -23,5 +31,18 @@ export function medianCut<T extends number[]>(data: T[], count = 16) {
 			];
 		});
 	}
-	return clusters;
+	return clusters.map((points) => ({
+		mean: calculateClusterMean(points),
+		points,
+	}));
+}
+
+function calculateClusterMean<T extends number[]>(points: T[]): T {
+	const sums = new Array(points[0].length).fill(0);
+	for (const point of points) {
+		for (const [index, value] of point.entries()) {
+			sums[index] += value;
+		}
+	}
+	return sums.map((value) => value / points.length) as T;
 }
